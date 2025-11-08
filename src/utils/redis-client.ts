@@ -1,13 +1,8 @@
-import Redis from 'ioredis';
+const redis = {
+  set: async () => {},
+  get: async () => null,
+  del: async () => {},
+  options: {}, // dummy object to prevent spread error
+};
 
-let redis: Redis | null = null;
-
-if (process.env.ENABLE_REDIS === 'true') {
-  redis = new Redis(); // or pass config if needed
-  redis.on('connect', () => console.log('✅ Redis connected'));
-  redis.on('error', err => console.error('❌ Redis error:', err));
-} else {
-  console.log('🚫 Redis disabled in this environment');
-}
-
-export { redis as redis };
+export { redis };
